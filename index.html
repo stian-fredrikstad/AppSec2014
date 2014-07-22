@@ -26,6 +26,88 @@
 
     <div class="step slide" data-x="0" data-y="-1500">
         <h2>TLS/SSL in Practice</h2>
+		<hr>
+		<ul>
+			<li>Achim Hoffmann</li>
+			<li>1 dag training</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="0" data-y="-700">
+        <h3>TLS/SSL in Practice</h3>
+		<hr>
+		<p>Økende antall sårbarheter de siste årene</p>
+		<ul>
+			<li>6 fra 1998 til 2007</li>
+			<li>4 i 2008</li>
+			<li>5 fra 2009 til 2010</li>
+			<li>7 i 2011</li>
+			<li>4 i 2012</li>
+			<li>8 i 2013</li>
+			<li>16 hittil i 2014!</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="0" data-y="100">
+        <h2>TLS/SSL in Practice</h2>
+		<hr>
+		<h3>Finnes mange forskjellige verktøy</h3>
+		<div style="width:50%; float:left">
+			<ul style="font-size:50%">
+				<li>openssl</li>
+				<li>nmap</li>
+				<li>athena-ssl-cipher-check_v062.jar</li>
+				<li>cnark.pl</li>
+				<li>manyssl.pl</li>
+				<li>SSLAudit.pl</li>
+				<li>sslmap.py</li>
+				<li>sslscan</li>
+				<li>ssltest.pl</li>
+			</ul>
+		</div>
+		<div style="float:left">
+			<ul style="font-size:50%">
+				<li>sslthing.sh</li>
+				<li>sslyze.py</li>
+				<li>ssldiagnose.exe</li>
+				<li>ssl-cipher-check.pl</li>
+				<li>testssl.sh</li>
+				<li>TestSSLServer.jar</li>
+				<li>THCSSLCheck.exe</li>
+				<li>TLSSLed_v1.3.sh</li>
+				<li>o-saft.pl</li>
+			</ul>
+		</div>		
+    </div>
+	
+	<div class="step slide" data-x="0" data-y="900">
+        <h2>TLS/SSL in Practice</h2>
+		<hr>
+		<h3>Verktøyene gjør mye likt, men selvfølgelig med forskjellig synax, forskjellig output og generelt vanskelig å tolke:</h3>
+		<ul style="font-size:65%">
+			<li>Noen har predefinert hvilke ciphers som testes</li>
+			<li>Noen baserer seg på OpenSSL</li>
+			<li>Noen må ha en "spesialkompilert" versjon av OpenSSL</li>
+			<li>Noen trenger spesielle perl moduler</li>
+			<li>Gir ikke alltid feilmelding hvis kommandoen skrives feil</li>
+			<li>Forskjellige måter å angi port/domain</li>
+			<li>++</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="0" data-y="1600">
+        <h2>TLS/SSL in Practice</h2>
+		<hr>
+		<h3>Achim Hoffmann har derfor startet OWASP prosjektet O-Saft</h3>
+		<ul style="font-size:65%">
+			<li>+ Ryddig syntax</li>
+			<li>+ Bra hjelpfunksjon</li>
+			<li>+ Konfigurerbare kommandoer</li>
+			<li>+ Støtter de fleste måter å angi domain/port</li>
+			<li>+ Kan formatere output som brukeren ønsker</li>
+			<li>- Krever innstallasjon av et par perl moduler</li>
+			<li>- Krever underliggende ssl bibliotek for deler av verktøyet</li>
+		</ul>
     </div>
 
     <div class="step slide" data-x="1000" data-y="-1500">
