@@ -151,6 +151,19 @@
 	<div class="step slide" data-x="1000" data-y="1700">
         <h3>Security of XML-based Web Services and Single Sign-On</h3>
 		<hr>
+		<h2>XML Signature</h2>
+		<p>HMAC Truncation Attack</p>
+		<pre style="font-size:65%">
+		&lt;SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"&gt;
+			&lt;HMACOutputLength&gt;1&lt;/HMACOutputLength&gt;
+		&lt;/SignatureMethod&gt;
+		</pre>
+		<p>Settes dette parameteret til 1 vil det være 50% sannsynlig at signaturverdien godtas i litt for mange rammeverk</p>
+    </div>
+	
+	<div class="step slide" data-x="1000" data-y="2500">
+        <h3>Security of XML-based Web Services and Single Sign-On</h3>
+		<hr>
 		<h2>WS-Attacker</h2>
     </div>
 
