@@ -195,6 +195,9 @@
 			<li>Legg til en ekstra body med samme id som den signerte</li>
 			<li>Når meldingen skal verifiseres, så verifiseres den ekte</li>
 			<li>Når applikasjonen skal bruke meldingen, så brukes den nye bodyen</li>
+			<li>Kan f.eks. utføres på tjenester med SAML, og den mest kjente norske er jo bankID</li>
+			<li>Gitt at service provide (les: banken) ikke har en riktig implementasjon, så kan vi catche meldingen før SAML response sendes til service provider og f.eks. modifisere personnr</li>
+			<li>Dette er jo kanskje et problem som bør sees nærmere på, selv om bankID har masse "kryptogreier", så er det fortsatt opp til service provider å godkjenne/tolke SAML responsen</li>
 		</ul>
     </div>
 	
@@ -205,10 +208,36 @@
 		<ul>
 			<li>Enkelt og greit fjern hele signaturelementet</li>
 			<li>Skjedde f.eks. mot Amazon EC2</li>
+			<li>Fungerte mot:</li>
+			<li>• Apache Axis2</li> 
+			<li>• JOSSO</li>
+			<li>• OpenAthens</li>
 		</ul>
     </div>
 	
 	<div class="step slide" data-x="1000" data-y="4900">
+        <h3>Security of XML-based Web Services and Single Sign-On</h3>
+		<hr>
+		<h2>XML SAML Certificate Confusion</h2>
+		<ul>
+			<li>En SAML response kan inneholde et sertifikat som brukes til meldingen</li>
+			<li>Dette kan være self signed, som er greit nok, men service provider må sjekke om dette er et sertifikat som godkjennes</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="1000" data-y="5700">
+        <h3>Security of XML-based Web Services and Single Sign-On</h3>
+		<hr>
+		<h2>XML SAML Provider Confusion</h2>
+		<ul>
+			<li>En SAML response har en destination som den er ment for</li>
+			<li>Denne kan f.eks. være http://banken.no eller http://evil.com</li>
+			<li>Det er ingenting i veien for at http://evil.com bruker samme identity provider som http://banken.no, men identity provider vil sette en destination som meldingen er ment for (og som forhåpentligvis er signert), da er det viktig at http://banken.no ikke godkjenner andre meldinger enn de som er ment for den</li>
+			<li>http://evil.com kan i motsatt fall lure en bruker til å logge inn på vegne av http://evil.com og deretter bruke denne meldingen serverside for å få tilgang til http://banken.no</li>
+		</ul>
+    </div>
+	
+	<div class="step slide" data-x="1000" data-y="6500">
         <h3>Security of XML-based Web Services and Single Sign-On</h3>
 		<hr>
 		<h2>WS-Attacker</h2>
